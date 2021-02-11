@@ -18,4 +18,4 @@ Just open a [new issue](https://github.com/instacash-app/test/issues/new) and we
 ## Once you are finished...
 
 - Upload your solutions to a public repository in GitHub or a similar service.
-- Share your repository link with us by email to sebastian@instacash.pe
+- Share your repository link with us by email to sebastian@instacash.pe & diego@instacash.pe
