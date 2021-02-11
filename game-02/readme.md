@@ -1,11 +1,11 @@
-#Gilded Rose Requirements Specification
+# Gilded Rose Requirements Specification
 
 ## What we need?
 
 - Refactor the terrible code: `app/gilded-rose.ts`
 - Don't change the test.
 
-##Rules and new requirement
+## Rules and new requirement
 
 Hi and welcome to team Gilded Rose. As you know, we are a small inn with a prime location in a
 prominent city ran by a friendly innkeeper named Allison. We also buy and sell only the finest goods.
