@@ -3,7 +3,6 @@
 ## What we need?
 
 - Refactor the terrible code: `app/gilded-rose.ts`
-- Don't change the test.
 
 ## Rules and new requirement
 
