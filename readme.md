@@ -9,11 +9,11 @@
 
 ## Games
 
-- [Don't permute](https://github.com/instacash-app/test/tree/master/game-01)
-- [Spaghetti code](https://github.com/instacash-app/test/tree/master/game-02)
+- [Don't permute](https://github.com/preauth-io/test/tree/master/game-01)
+- [Spaghetti code](https://github.com/preauth-io/test/tree/master/game-02)
 
 ## Any doubts?
-Just open a [new issue](https://github.com/instacash-app/test/issues/new) and we'll get back to you asap.
+Just open a [new issue](https://github.com/preauth-io/test/issues/new) and we'll get back to you asap.
 
 ## Once you are finished...
 
