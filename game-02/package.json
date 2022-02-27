@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Gilded Rose kata in TypeScript",
   "scripts": {
-    "compile": "tsc"
+    "compile": "tsc",
+    "dev": "nodemon",
+    "test": "mocha"
   },
   "license": "MIT",
   "private": true,
@@ -13,6 +15,7 @@
     "@types/node": "~7.0.18",
     "chai": "~4.2.0",
     "mocha": "~8.2.1",
+    "nodemon": "^2.0.15",
     "nyc": "~15.1.0",
     "rimraf": "~3.0.2",
     "source-map-support": "0.5.19",

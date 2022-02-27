@@ -10,6 +10,11 @@ export class Item {
     }
 }
 
+interface Factor {
+    qualityFactor: number;
+    canSellItem: boolean;
+}
+
 export class GildedRose {
     items: Array<Item>;
 
@@ -17,53 +22,75 @@ export class GildedRose {
         this.items = items;
     }
 
-    updateQuality() {
-        for (let i = 0; i < this.items.length; i++) {
-            if (this.items[i].name != 'Aged Brie' && this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
-                if (this.items[i].quality > 0) {
-                    if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
-                        this.items[i].quality = this.items[i].quality - 1
+    getFactors(itemName: string, sellIn: number, quality: number): Factor {
+        switch (itemName) {
+            case 'Aged Brie':
+                if(quality < 50) {
+                    if(sellIn > 0) {
+                        return {qualityFactor: 1, canSellItem: true};
+                    }
+                    
+                    if(quality < 49) {
+                        return {qualityFactor: 2, canSellItem: true};
                     }
                 }
-            } else {
-                if (this.items[i].quality < 50) {
-                    this.items[i].quality = this.items[i].quality + 1
-                    if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
-                        if (this.items[i].sellIn < 11) {
-                            if (this.items[i].quality < 50) {
-                                this.items[i].quality = this.items[i].quality + 1
-                            }
-                        }
-                        if (this.items[i].sellIn < 6) {
-                            if (this.items[i].quality < 50) {
-                                this.items[i].quality = this.items[i].quality + 1
-                            }
-                        }
-                    }
-                }
-            }
-            if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
-                this.items[i].sellIn = this.items[i].sellIn - 1;
-            }
-            if (this.items[i].sellIn < 0) {
-                if (this.items[i].name != 'Aged Brie') {
-                    if (this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
-                        if (this.items[i].quality > 0) {
-                            if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
-                                this.items[i].quality = this.items[i].quality - 1
-                            }
-                        }
-                    } else {
-                        this.items[i].quality = this.items[i].quality - this.items[i].quality
-                    }
-                } else {
-                    if (this.items[i].quality < 50) {
-                        this.items[i].quality = this.items[i].quality + 1
-                    }
-                }
-            }
-        }
 
+                return {qualityFactor: 0, canSellItem: true}
+            case 'Sulfuras, Hand of Ragnaros':
+                return {qualityFactor: 0, canSellItem: false};
+
+            case 'Backstage passes to a TAFKAL80ETC concert':
+                if(quality < 50 && quality > 0) {
+                    if(sellIn > 10) {
+                        return {qualityFactor: 1, canSellItem: true};
+                    }
+
+                    if(sellIn > 5 && quality < 49) {
+                        return {qualityFactor: 2, canSellItem: true};
+                    }
+
+                    if(sellIn > 0) {
+                        return {qualityFactor: 3, canSellItem: true};
+                    }
+                }
+
+                return {qualityFactor: quality * -1, canSellItem: true};
+            
+            case 'Conjured':
+                if(quality > 1) {
+                    if(sellIn > 0) {
+                        return {qualityFactor: -2, canSellItem: true};
+                    }
+                    
+                    if(quality > 3) {
+                        return {qualityFactor: -4, canSellItem: true};
+                    }
+                }
+
+                return {qualityFactor: quality * -1, canSellItem: true}
+            default:
+                if(quality > 0) {
+                    if(sellIn > 0) {
+                        return {qualityFactor: -1, canSellItem: true};
+                    }
+                    
+                    if(quality > 1) {
+                        return {qualityFactor: -2, canSellItem: true};
+                    }
+                }
+
+                return {qualityFactor: quality * -1, canSellItem: true}
+        }
+    }
+
+    updateQuality() {
+        this.items.forEach(item => {
+            const {qualityFactor, canSellItem} = this.getFactors(item.name, item.sellIn, item.quality);
+            item.quality += qualityFactor;
+            if(canSellItem) {
+                item.sellIn --;
+            }
+        });
         return this.items;
     }
 }
