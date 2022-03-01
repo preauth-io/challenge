@@ -19,13 +19,3 @@ class Solution:
                 if list_numbers[i] + list_numbers[j] == value:
                     return [list_numbers[i], list_numbers[j]]
         return None
-
-
-def main():
-    """Main function to test the solution."""
-    solution = Solution()
-    print(solution.find_pair_numbers_given_value([5, 2, 5, 8, 1], 10))
-
-
-if __name__ == '__main__':
-    main()
