@@ -32,7 +32,7 @@ Just for clarification, an item can never have its Quality increase above 50, ho
 
 The kata uses:
 
-- [8.0+](https://www.php.net/downloads.php)
+- [PHP 8.2.36+, 8.3.37+, 8.4.28+, 8.5.13+, or 8.6+](https://www.php.net/downloads.php)
 - [Composer](https://getcomposer.org)
 
 Recommended:
