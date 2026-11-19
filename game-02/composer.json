@@ -3,7 +3,7 @@
     "description": "A kata to practice refactoring, tests and polymorphism",
     "license": "MIT",
     "require": {
-        "php": "^8.0"
+        "php": "~8.2.36 || ~8.3.37 || ~8.4.28 || ^8.5.13"
     },
     "require-dev": {
         "approvals/approval-tests": "dev-Main",
